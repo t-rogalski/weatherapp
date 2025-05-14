@@ -1,3 +1,60 @@
+:root {
+  --up: calc(1.75rem - 50vh + 20px);
+  --right: calc(50vw - 375px);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(232, 25%, 10%);
+  height: 100vh;
+}
+
+form {
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border-radius: 20px;
+  width: 200px;
+  height: 3rem;
+  font-size: 2rem;
+  border: 1px solid white;
+  background-color: hsl(231, 100%, 25%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  font-size: 2rem;
+  height: 3.5rem;
+  width: 500px;
+  border-radius: 20px;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+}
+
+/* Animacja */
+button,
+input {
+  transition: transform 1.5s ease-in-out;
+  padding: 10px;
+}
+
+.move-up {
+  transform: translate(var(--right), var(--up));
 }

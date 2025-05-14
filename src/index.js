@@ -35,6 +35,8 @@ butSubmit.addEventListener('click', async (e) => {
   }
   const city = inputCity.value.trim();
   const wawa = await fetchData(city);
+  inputCity.classList.add('move-up');
+  butSubmit.classList.add(`move-up`);
   console.log(wawa.resolvedAddress);
   form.reset();
 });
