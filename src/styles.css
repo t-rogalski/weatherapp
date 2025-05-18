@@ -10,19 +10,18 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: hsl(232, 25%, 10%);
   height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
 }
 
 form {
-  height: 100%;
+  position: absolute;
   display: flex;
   gap: 10px;
-  justify-content: center;
-  align-items: center;
 }
 
 button {
@@ -49,12 +48,29 @@ input {
 }
 
 /* Animacja */
-button,
-input {
+form {
   transition: transform 1.5s ease-in-out;
-  padding: 10px;
 }
 
 .move-up {
   transform: translate(var(--right), var(--up));
+}
+
+.visible {
+  transform: opacity(1)
+}
+
+.unvisible {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.container {
+  width: 100%;
+  font-size: 2rem;
+  color: white;
+  transition: opacity 2s ease-in-out;
 }
