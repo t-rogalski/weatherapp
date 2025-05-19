@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  <script defer src="main.js"></script></head>
+  <body>
+    <form>
+      <input
+        id="miasto"
+        name="miasto"
+        type="text"
+        placeholder="City"
+        minlength="3"
+        maxlength="16"
+        pattern="[\p{L}\s]+"
+      />
+      <button id="submit" type="submit">Szukaj</button>
+    </form>
+  </body>
+</html>
