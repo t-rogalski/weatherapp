@@ -13,7 +13,7 @@ body {
   background-color: hsl(232, 25%, 10%);
   height: 100vh;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -57,7 +57,7 @@ form {
 }
 
 .visible {
-  transform: opacity(1)
+  transform: opacity(1);
 }
 
 .unvisible {

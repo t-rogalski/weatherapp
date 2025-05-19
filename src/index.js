@@ -12,7 +12,6 @@ async function fetchData(city) {
     );
     const cityData = await data.json();
 
-    // Zwróć jako obiekt
     return {
       address: cityData.address,
       resolvedAddress: cityData.resolvedAddress,
@@ -47,24 +46,45 @@ async function createContainer(fdata) {
   const weatherTemp = fdata.temperature;
   const weatherHum = fdata.humidity;
 
-  const pName = document.createElement('p');
-  pName.classList.add('pname');
-  const pDesc = document.createElement('p');
-  pDesc.classList.add('pdesc');
-  const pTemp = document.createElement('p');
-  pTemp.classList.add('ptemp');
-  const pHum = document.createElement('p');
-  pHum.classList.add('phum');
+  const divsNames = ['divName', 'divDesc', 'divTemp', 'divHum'];
+  const divs = {};
+  divsNames.forEach((name) => {
+    divs[name] = document.createElement('div');
+    divs[name].classList.add(name);
+  });
 
-  pName.textContent = cityName;
-  pDesc.textContent = weatherDesc;
-  pTemp.textContent = weatherTemp;
-  pHum.textContent = weatherHum;
+  const pNames = ['pName', 'pDesc', 'pTemp', 'pHum'];
+  const pars = {};
+  pNames.forEach((name) => {
+    pars[name] = document.createElement('div');
+    pars[name].classList.add(name);
+  });
 
-  container.appendChild(pName);
-  container.appendChild(pDesc);
-  container.appendChild(pTemp);
-  container.appendChild(pHum);
+  pars.pName.textContent = cityName;
+  pars.pDesc.textContent = weatherDesc;
+  pars.pTemp.textContent = weatherTemp;
+  pars.pHum.textContent = weatherHum;
+
+  const svgsnames = ['location_city', 'thermostat', 'water_drop'];
+  const svgs = {};
+  svgsnames.forEach((name) => {
+    svgs[name] = document.createElement('span');
+    svgs[name].classList.add('material-icons');
+    svgs[name].classList.add(name);
+    svgs[name].textContent = name;
+  });
+
+  divs.divName.appendChild(svgs.location_city);
+  divs.divName.appendChild(pars.pName);
+  divs.divDesc.appendChild(pars.pDesc);
+  divs.divTemp.appendChild(svgs.thermostat);
+  divs.divTemp.appendChild(pars.pTemp);
+  divs.divHum.appendChild(svgs.water_drop);
+  divs.divHum.appendChild(pars.pHum);
+
+  Object.values(divs).forEach((elem) => {
+    container.appendChild(elem);
+  });
 
   body.appendChild(container);
 
@@ -78,10 +98,10 @@ async function refreshContainer(fdata) {
   container.classList.remove('visible');
   container.classList.add('unvisible');
 
-  const pName = document.querySelector('.pname');
-  const pDesc = document.querySelector('.pdesc');
-  const pTemp = document.querySelector('.ptemp');
-  const pHum = document.querySelector('.phum');
+  const pName = document.querySelector('.pName');
+  const pDesc = document.querySelector('.pDesc');
+  const pTemp = document.querySelector('.pTemp');
+  const pHum = document.querySelector('.pHum');
 
   setTimeout(() => {
     const cityName = fdata.resolvedAddress;
